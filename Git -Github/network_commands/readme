@@ -1,0 +1,16 @@
+## Network commands:
+
+
+curl: it will show whether server is connected or not
+
+Ping: will show the network issues.
+
+ifconfig: gives list of ethernet
+
+ip addr: It gives server public and private address.
+
+curl: curl icanhazip.com
+
+nestat-a
+
+history ---> gives the list of coommands which ran today

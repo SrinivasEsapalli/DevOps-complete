@@ -1,0 +1,29 @@
+# You are given a text file that will be piped into your command through STDIN. Use grep to display all the lines that contain the word the in them. The search should be sensitive to case. Display only those lines of the input file that contain the word 'the'.
+- grep 'the ' file_name
+- if it case insensitive means use grep -i 'the ' file_name
+
+
+
+#question:
+; note that the value of  does not matter when writing your command.
+Output Format
+
+For each credit card number, print its masked version on a new line.
+
+Sample Input
+
+1234 5678 9101 1234  
+2999 5178 9101 2234  
+9999 5628 9201 1232  
+8888 3678 9101 1232  
+Sample Output
+
+**** **** **** 1234
+**** **** **** 2234
+**** **** **** 1232
+**** **** **** 1232
+
+
+## answer
+
+sed -E 's/([0-9]{4} [0-9]{4} [0-9]{4})/**** **** ****/'
