@@ -1,0 +1,4 @@
+#
+variables:
+- name: mytemplateVariable
+  value: "This is from newVaribleTemplate.yaml varible file"

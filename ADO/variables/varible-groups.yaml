@@ -1,0 +1,16 @@
+trigger: none
+
+# variable groups
+# The variables which are declareed inside azure devOps portal by group name and used across multiple pipelines are called variable groupps..
+variables:
+- group: myGroupVariables
+pool: AWS-agents
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo $(groupVariable)
+      displayName: "Group level"

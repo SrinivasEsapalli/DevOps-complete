@@ -1,0 +1,18 @@
+
+# Secure Varibles
+#Secrets and secure variables are used to store sensitive information such as passwords, API keys, and connection strings
+
+trigger: none
+pool: AWS-agents
+# variable groups
+# The variables which are declareed inside azure devOps portal by group name and used across multiple pipelines are called variable groupps..
+variables:
+  secretVariable: $(superSecretVariable2)
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo $(secretVariable)
+      displayName: "Secret level"

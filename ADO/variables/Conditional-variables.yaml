@@ -1,0 +1,20 @@
+trigger: none
+
+pool: AWS-agents
+# conditional variables
+#conditional expressions used to control the flow of your pipeline based on certain conditions. Conditional expressions allow you to run specific steps or skip them altogether depending on the value of a variablepool: AWS-agents
+variables:
+  myVariable: false
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo "It will be printed when the conditin is true"
+      condition: eq(variables['myVariable'], 'true')
+      displayName: "Conditional variable"
+    - script: echo "It will be printed when the conditin is false"
+      condition: eq(variables['myVariable'], 'false')
+      displayName: "Conditional variable"

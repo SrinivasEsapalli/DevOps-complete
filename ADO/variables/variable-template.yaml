@@ -1,0 +1,16 @@
+trigger: none
+
+pool: AWS-agents
+# Variable Template
+# A set of variables once and reuse them across multiple pipelines. This helps maintain consistency and reduces duplication in your pipeline definitions.variables:
+variables:
+- template: newVaribleTemplate.yaml
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo $(mytemplateVariable)
+      displayName: "Variable template"
+

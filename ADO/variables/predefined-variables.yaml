@@ -1,0 +1,17 @@
+trigger: none
+
+pool: AWS-agents
+#predefined variables
+# the varibales which are predefined are used in in any pipeline are called predifined variables..
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: |
+        echo " Building on branch $(Build.sourceBranch)"
+        echo " Current build number: $(Build.BuildNumber)"
+        echo " Definition name: $(Build.DefinitionName)"
+
+      displayName: "Pre defined"

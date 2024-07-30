@@ -1,0 +1,16 @@
+trigger: none
+
+# Enivironmental variables
+#These variables are provided by the operating system or can be set explicitly within the pipeline scriptpool: AWS-agents
+pool: AWS-agents
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: |
+        echo "present working directory: $PWD"
+        echo "User home directory: $Home"
+      displayName: "Env Variable"

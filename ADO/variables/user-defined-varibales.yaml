@@ -1,0 +1,23 @@
+trigger: none
+# user defined variables
+# The variables which are defined by the user are called predifined variables..
+variables:
+  pipelineVariable: "Pipeline level variable"
+pool: AWS-agents
+
+stages:
+- stage: Build
+  variables:
+    stageVariable: "This is stage level varibale"
+  jobs:
+  - job: BuildJob
+    variables:
+      jobVariable: "This is job level variable"
+    displayName: "Build Job"
+    steps:
+    - script: echo $(pipelineVariable)
+      displayName: "Pipeline level"
+    - script: echo $(stageVariable)
+      displayName: "Stage level"
+    - script: echo $(jobVariable)
+      displayName: "Job level"

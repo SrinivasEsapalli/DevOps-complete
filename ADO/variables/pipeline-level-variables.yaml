@@ -1,0 +1,31 @@
+# Disable automatic triggering of the pipeline
+trigger: none
+
+# Pipeline-level variables the variables declared here are usewd across all the stages..
+variables:
+  pipelineVariable: "I'm a pipeline variable"
+
+# Define stages and jobs
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    pool:
+      name: AWS-agents # Specify the agent pool to use
+    steps:
+    - script: |
+        sudo yum update -y
+        sudo yum install -y git
+      displayName: 'Installing git using yum'
+    - script: |
+        echo "$(pipelineVariable)"
+      displayName: 'Display Pipeline Variable in Build Stage'
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    pool:
+      name: AWS-agents # Specify the agent pool to use
+    steps:
+    - script: echo "$(pipelineVariable)"
+      displayName: 'Display Pipeline Variable in Deploy Stage'
