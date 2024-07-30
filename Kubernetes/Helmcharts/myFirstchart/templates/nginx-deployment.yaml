@@ -1,0 +1,23 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    application: nginx-app
+    version: 1.0.0
+spec:
+ replicas: {{ .Values.replicaCount }}
+ selector:
+  matchLabels:
+    application: nginx-app
+ template:
+    metadata:
+      labels:
+        application: nginx-app
+    spec:
+      containers:
+        - name: nginix-container1
+          image: srinivasesapalli/nginx-test:1.0.0
+          ports:
+            - containerPort: 80
+        

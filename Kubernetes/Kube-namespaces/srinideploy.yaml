@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: onlineapp3
+  labels:
+    application: srini-deploy
+    version: 1.0.3
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      application: srini-deploy
+  template:
+    metadata:
+      labels: 
+        application: srini-deploy
+    spec:
+      containers: 
+        - name: srini-container-1
+          image: srinivasesapalli/nginx-test:1.0.0
+          ports:
+            - containerPort: 80
+            
+            
+
+

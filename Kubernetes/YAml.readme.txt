@@ -1,0 +1,54 @@
+YAMl:
+ Pods and services etc are represented in YAML format..
+
+Dictonaries - unordered and list and arrays are ordered..
+
+Types of YAML format:
+ 1)Dictionary:
+if we are explaining about a single object features we can use dictionary..
+ ex: car 
+ color: Blue
+ price $20K
+
+Dictionary inside dictionary
+ 
+  ex: 
+ car 
+  color: Blue
+  Model :
+	name: Toyota
+	year: 2005
+  price $20K
+
+
+2) LIST
+when we are storing different cars then we are using list..
+ Ex: 
+   Car
+     - blue Toyota
+     - Green Toyota
+     - Black Toyota
+3)LIST OF Dictionaries..
+if we have to store all the details of each car then in this case we can use the list of dictionaries string
+ex:
+     - color: Blue
+        Model :
+	  name: Toyota
+	  year: 2006
+         price $28K
+	
+     -  color: Green
+      	Model :
+	  name: Toyota
+	  year: 2005
+        price $29K
+      - color: Black
+        Model :
+	  name: Toyota
+	  year: 2024
+         price $200K
+
+
+  
+
+	

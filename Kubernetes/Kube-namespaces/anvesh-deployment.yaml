@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: onlineapp1
+  labels:
+    application: anvesh-deploy
+    version: 1.0.0
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      application: anvesh-deploy
+  template:
+    metadata:
+      labels: 
+        application: anvesh-deploy
+    spec:
+      containers: 
+        - name: anvesh-container-1
+          image: srinivasesapalli/nginx-test:1.0.0
+          ports:
+            - containerPort: 80
+            
+            
+
+

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: onlineapp4
+  labels:
+    application: triveni-deploy
+    version: 1.0.4
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      application: triveni-deploy
+  template:
+    metadata:
+      labels: 
+        application: triveni-deploy
+    spec:
+      containers: 
+        - name: triveni-container-1
+          image: srinivasesapalli/nginx-test:1.0.0
+          ports:
+            - containerPort: 80
+            
+            
+
+

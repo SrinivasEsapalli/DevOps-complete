@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: onlineapp1
+  labels:
+    application: manasa-deploy
+    version: 1.0.0
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      application: manasa-deploy
+  template:
+    metadata:
+      labels: 
+        application: manasa-deploy
+    spec:
+      containers: 
+        - name: manasa-container-1
+          image: srinivasesapalli/nginx-test:1.0.0
+          ports:
+            - containerPort: 80
+            
+            
+
+

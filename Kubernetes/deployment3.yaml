@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-frontend
+  labels:
+    app_name: myapp1
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app_name: myapp1
+  template:
+    metadata:
+      name: mypod
+      labels:
+        app_name: myapp1
+    spec:
+      containers:
+      - name: mycontainer1
+        image: nginix
+        ports:
+        - containerPort: 80

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet # yaml file type
+metadata:
+  name: myreplica-app # app name
+  labels:
+    app: myrep-app
+    version: 1.0.1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myrep-app
+  template:
+    metadata:
+      name: mypodapp
+      labels:
+        app: myrep-app
+    spec:
+      containers:
+      - name: myappcontainer
+        image: "debian-slim:latest"
+        ports:
+        - containerPort: 80
