@@ -18,7 +18,7 @@
 - Is another node where k8's is installed and it is responsible for creating and managing the nodes. 
 
 ### Kubernetes componests and request flow within k8's digram 
-![screenshorts](https://github.com/SrinivasEsapalli/linux/blob/master/shell_script/practise/Screenshorts/screen%201.jpg)
+![screenshorts](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/Kubernetes/screenshorts/image2.jpeg)
 
 ### contiainer runtime interface(CRI): 
 - Before only k8's are working with dockers so by creating CRI by folllwing (open container initiatiative) any one can work with it.
