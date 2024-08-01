@@ -15,7 +15,7 @@
 
 ## types
 
-![screenshot](https://github.com/SrinivasEsapalli/linux/blob/master/shell_script/practise/Screenshorts/screen%401.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%204.jpg)
 ### .deb - Debian package manager
 -> ubuntu, debian, linux Mint uses debian based package managers.
 
