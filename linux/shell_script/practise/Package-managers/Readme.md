@@ -22,7 +22,7 @@
 ### .RPM
 -> RHEL, Centos, Fedora used Rpm based package managers.
 
-![screenshot](https://github.com/SrinivasEsapalli/linux/blob/master/shell_script/practise/Screenshorts/screen%501.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%205.jpg)
 
 ### DPKG 
 - The base package manager for debian based distributions.
