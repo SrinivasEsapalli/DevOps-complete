@@ -32,7 +32,7 @@
 ### Multi-Container POD:
  - We cannot create multi containers of same kind in a pod but we can create a helper container to help the main container.. like creating User or processing the files etc..
 ### Recreate: 
-- In this strategy all the pods of the application will be terminated once and created again. Here the major drwaback is like if we delete all the pods at a time the application will have some downtime.
+- In this strategy all the pods of the application will be terminated once and created again. Here the major drawback is like if we delete all the pods at a time the application will have some downtime.
 
 ### rolling update: 
 - It is the default deployment strategy..here one pod will be terminated alternatively other pod will be created..the advantage of this feature is we create the pods alternatively so there will be no down time for the application.
