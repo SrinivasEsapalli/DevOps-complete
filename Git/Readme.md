@@ -52,8 +52,11 @@ to create the files
 -create a folder and initialize the files then
 ### git init
  - to make a directory as a repo using git bash
+
+### if we create the directory using local git after init it will create a master branch
 ### git switch -c main 
-- to change to a particular branch
+- c is for creating new branch main
+- switch is To change to a main branch
 ### git remote -v 
 - it will show the linked remote repos.
 
@@ -62,14 +65,23 @@ to create the files
 
 ### Remote-URL
 need to create a new repository in github and copy paste it here.. 
+## git add .
+it saves all the available files in the staging area.
+
+## git commit -m " commit message ex: files is createed or updated"
+
+it will saves the files in the local repo
 
 ### git push origin main
 - pushes to the main origin
 - if we create the repository in GitHub it will create the origin branch
+- it will saves the files in remote repo i.e in github official account. 
+- Here main is the branch name we can mention the branh name to which we are planning to commit
 
-### if we create the directory using local git after init it will create a master branch
 ### git push origin master
 To commit to the master branch
+### code .
+opens visual studio for the repository.
 
 
 ## general cmd
@@ -86,8 +98,7 @@ it will create the readme file
 to add the content into the file
 ## git add Readmee.md(filename)
 saves the particular file in the staging area
-## git add .
-it saves all the available files in the staging area.
+
 
 ## git rm file name
 to remove a file 
@@ -95,14 +106,6 @@ to remove a file
 ## git rm -r directoryname
 to remove a directory 
 
-## git commit -m " commit message ex: files is createed or updated"
-
-it will saves the files in the local repo
-
-## git push origin main 
-
-it will saves the files in remote repo i.e in github official account. 
-Here main is the branch name we can mention the branh name to which we are plamnning to commit
 
 ## git diff
 
@@ -120,8 +123,7 @@ it gives all the recent commits
 ## git branch 
 to check the current working branch
 
-### code .
-opens visual studio for the repository.
+
 
 ### git commit --ammend
 
