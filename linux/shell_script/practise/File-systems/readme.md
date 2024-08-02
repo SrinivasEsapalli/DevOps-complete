@@ -141,6 +141,10 @@ it also same output of $SHELL is input to shell.txt
 
 ## File permissions
 
-
+### files
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%207.jpg)
+
+### With explanation of pcatal values
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%208.jpg)
  
