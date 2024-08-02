@@ -6,13 +6,6 @@
 - [ GREP ](#GREP)
 - [ File permissions ](#File-permissions)
 
-- [ commands ](#commands)
-- [ directory commands ](#directory-commands)
-- [ shell types ](#shell-types)
-- [ environment varibles ](#environment-varibles)
-- [ linux Kernel](#linux-Kernel)
-
-
  ## file directory_name or file file_name
  - Displays type of a file.
 
@@ -29,7 +22,7 @@ BLOCK DEVICE       b
 
 ## FileSystem Hierachy
 
-![screenshot](https://github.com/SrinivasEsapalli/linux/blob/master/shell_script/practise/Screenshorts/screen%301.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%203.jpg)
 
 ### /Root
 - To store the root user data
