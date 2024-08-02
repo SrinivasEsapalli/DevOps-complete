@@ -1,7 +1,9 @@
 # Linux security
-
+### man command name
+- to get complete decription of a command wwith their tags..
 - [linux security](#linux-security)
 - [accounts](#accounts)
+- [Access control files](#Access-control-files)
 
 ## linux Security
 
@@ -46,4 +48,39 @@
 - super user
 
 
+### Access control files
+- these are read only files
+### /etc/passwd
+- grep -i ^bob /etc/passwd
+bob:x:1001:1001::/home/bob:/bin/bash
+USERNAME:PASSWORD:UID:GID:GECOS:HOMEDIR:SHELL
 
+### /etc/shadow
+- user passwords are stored here in encrypted way
+-  grep -i ^bob /etc/shadow
+bob:$6$0h0utOtO$5JcuRxR7y72LLQk4Kdog7u09LsNFS0yZPkIC8pV9tgD0wXCHutY
+cWF/7.eJ3TfGfG0lj4JF63PyuPwKC18tJS.:18188:0:99999:7:::
+- USERNAME:PASSWORD:LASTCHANGE:MINAGE:MAXAGE:WARN:INACTIVE:EXPDATE
+
+### /etc/group
+- grep -i ^bob /etc/group
+developer:x:1001:bob,sara
+NAME:PASSWORD:GID:MEMBERS
+
+
+### Root user commands
+#### useradd user_name
+- To add new user
+#### passwd user_name
+- to set password for user..
+#### passwd 
+- to change password for user..
+
+#### userdel user_name
+- To delete a new user
+#### groupadd group_name
+- To add a new group
+#### groupdel group_name
+- To delete a new group
+#### sudo grep bob /etc/sudoers
+- Command to check the user permissions..

@@ -3,6 +3,7 @@
 - [ FileSystem Hierachy ](#FileSystem-Hierachy)
 -[ File size ](#File-size)
 -[ GREP ](#GREP)
+-[ File permissions ](#File-permissions)
 
 
  ## file directory_name or file file_name
@@ -138,5 +139,8 @@ hello
 /usr/bin/bash
 it also same output of $SHELL is input to shell.txt
 
+## File permissions
 
-- 
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%207.jpg)
+ 
