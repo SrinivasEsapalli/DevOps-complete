@@ -93,6 +93,7 @@ ex: Centos, Fedora
 
 
 ### DPKG-working
+jj 
 #### dpkg -i telenet.deb
 - To install the packages
 #### dpkg -r telnet.deb
