@@ -1,9 +1,16 @@
 # Files
 
-[ FileSystem Hierachy ](#FileSystem-Hierachy)
-[ File size ](#File-size)
-[ GREP ](#GREP)
-[ File permissions ](#File-permissions)
+## All data
+- [ FileSystem Hierachy ](#FileSystem-Hierachy)
+- [ File size ](#File-size)
+- [ GREP ](#GREP)
+- [ File permissions ](#File-permissions)
+
+- [ commands ](#commands)
+- [ directory commands ](#directory-commands)
+- [ shell types ](#shell-types)
+- [ environment varibles ](#environment-varibles)
+- [ linux Kernel](#linux-Kernel)
 
 
  ## file directory_name or file file_name
