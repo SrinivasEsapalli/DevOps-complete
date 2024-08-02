@@ -74,6 +74,7 @@ ex: Centos, Fedora
 
 
 #### yum-working
+ - /etc/yum.repos.d -> software repository for yum folder.
 #### Sequence of steps for installing the package..
 #### yum install httpd
 - Installing httpd
