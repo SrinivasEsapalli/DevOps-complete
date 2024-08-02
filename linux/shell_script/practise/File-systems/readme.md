@@ -1,9 +1,9 @@
 # Files
 
-- [ FileSystem Hierachy ](#FileSystem-Hierachy)
--[ File size ](#File-size)
--[ GREP ](#GREP)
--[ File permissions ](#File-permissions)
+[ FileSystem Hierachy ](#FileSystem-Hierachy)
+[ File size ](#File-size)
+[ GREP ](#GREP)
+[ File permissions ](#File-permissions)
 
 
  ## file directory_name or file file_name
