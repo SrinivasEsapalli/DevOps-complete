@@ -144,7 +144,15 @@ it also same output of $SHELL is input to shell.txt
 ### files
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%207.jpg)
 
-### With explanation of pcatal values
+### With explanation of ocatal values
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%208.jpg)
+
+### chmod <permissions> file 
+### symbolic mode
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%209.jpg)
+
+### numeric mode
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2010.jpg)
+
  
