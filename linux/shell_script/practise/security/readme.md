@@ -4,6 +4,8 @@
 - [linux security](#linux-security)
 - [accounts](#accounts)
 - [Access control files](#Access-control-files)
+- [ ssh ](ssh)
+- [ iptables ](iptables)
 
 ## linux Security
 
@@ -84,3 +86,33 @@ NAME:PASSWORD:GID:MEMBERS
 - To delete a new group
 #### sudo grep bob /etc/sudoers
 - Command to check the user permissions..
+
+
+
+
+
+### ssh 
+- secured shell
+#### ssh <user>@<hostname OR IP Address>
+
+ ### ssh password less with key pair generation
+#### ssh-keygen -t rsa
+- key genration
+- it will generate public and private keys with below locations
+  PublicKey:/home/username/.ssh/id_rsa.pub
+  Private Key:/home/username/.ssh/id_rsa
+  - ssh-copy-id username@ipaddress
+
+  
+ #### $ scp –pr /home/bob/media/ devapp01:/home/bob
+ - same like ssh to copy a file from system to server 
+ -pr - it is ued for with permissions
+
+## iptables
+- it will help to create security in the network
+
+### sudo apt install iptables
+- to install iptables
+### sudo iptables -L
+- to list rules
+

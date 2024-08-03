@@ -6,6 +6,7 @@
 - [ GREP ](#GREP)
 - [ File permissions ](#File-permissions)
 
+
  ## file directory_name or file file_name
  - Displays type of a file.
 
@@ -141,6 +142,8 @@ it also same output of $SHELL is input to shell.txt
 
 ## File permissions
 
+### ls -ld file_name
+- To check the permissions.
 ### files
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%207.jpg)
 
@@ -155,4 +158,8 @@ it also same output of $SHELL is input to shell.txt
 ### numeric mode
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2010.jpg)
 
- 
+### chnaging owner and group for file
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2011.jpg)
+
+
