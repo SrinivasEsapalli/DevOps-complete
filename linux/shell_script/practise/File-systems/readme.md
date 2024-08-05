@@ -78,7 +78,7 @@ Ex: vi text editor, mozila fir fox
 #### tar -tf file_name
 - To see the contents of file
 #### tar –xf test.tar
-
+- This command extracts files from Archives. 
 #### tar -zcf
 - To comprise the size of the tar file.
 
