@@ -104,7 +104,7 @@ NAME:PASSWORD:GID:MEMBERS
   - ssh-copy-id username@ipaddress
 
   
- #### scp –pr /home/bob/media/ devapp01:/home/bob
+ #### $ scp –pr /home/bob/media/ devapp01:/home/bob
  - same like ssh to copy a file from system to server 
  -pr - it is ued for with permissions
 
