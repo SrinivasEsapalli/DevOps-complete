@@ -2,7 +2,14 @@
 [ Intro ](intro)
 [ variables ](varibales)
 [ arithmetic operations ](arithmetic-operations)
-[conditional logic](conditional-logic)
+[conditional logic ](conditional-logic)
+[ for each loop ](for-each-loop)
+[ while loop ](while-loop)
+[  case statement ](case-statement)
+[ Shebang ](shebang)
+[ Exit codes ](Exit-codes)
+[ Functions ](Functions)
+[ shellcheck ](shellcheck)
 
 ## Intro
 ## Why
@@ -101,3 +108,108 @@ fi
 
 ##### with  files
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2019.jpg)
+
+#### for each loop
+for variable_name in <list of missions>
+do
+task-to-be-done
+done
+- we can run any number of loops by using this loop..
+--> or we can use file-name to read the data from it
+for variable_name in $(cat file-name)
+do
+task-to-be-done
+done
+
+---> or we can use a variable to increment it
+for (( variable_nam =0; variable_nam <= 100; variable_nam++ ))
+do 
+task-to-be-done
+done
+
+----> or with numbers in particular range
+for variable_name in {0-100}
+do
+task-to-be-done
+done
+
+### while loop
+-Execute a command or a set of commands multiple times but you are not
+sure how many times.
+• Execute a command or a set of commands until a specific condition occurs
+• Create infinite loops
+• Menu driven programs
+#### syntax:
+while [ conditions ]
+do
+statements-to-be executed
+done
+
+### case statement
+
+
+case << value >> in
+esac
+stmt1
+;;
+stmt2
+;;
+stmt3
+;;
+stmt4
+;;
+
+### shebang - #!bin/bash
+- we use shebang to differentiate bash(bourne again) from other shell like bourne shell etc..
+- few features are supported in bash and not supported in other-versions...
+
+### Exit codes
+- for every command we execute it will retuern an a exit code..
+- for success the exit code will be 0
+- in all the other cases it is > 0.
+- after running any command use echo $ to get the exit code 
+- we can modify the exit code by giving exit code_number
+
+### Functions
+- it will be helpful to remove the code duplicates and help to run the functionality as many times as required..
+#### Syntax
+- function function-name() {
+// functiona defination
+}
+function call
+// help to call the function as requires..
+
+-  Always keeps function defination on top then function call
+- for functions if we use the exit code it will stop executing so here we can give the exit code by using return. ex: return 1.
+#### When to use functions.
+-  Break up large script that performs many different tasks:
+- Installing packages
+- Adding users
+- Configuring firewalls
+- Perform Mathematical calculations
+
+--> ex:
+// function defination with command line arguments 
+function add(){
+echo $(( $1 + $2 ))
+
+}
+// command line arguments
+sum=$(add 3 5 )
+
+----> ex: by using retun 
+function add(){
+return $(( $1 + $2 ))
+}
+add 3 5
+sum=$?
+// we cannont use this type of return in c language etc..
+// we can retun only numbers not return the text.
+// we cannot retrieve the value by assigning the value to a varible ex: sum=$(add 3 5)
+
+#### shellcheck
+- it will help to improve in the shell script or it will help to find the errors in the script..
+
+ex: apt-get install shellcheck
+yum install shellcheck
+shellcheck file-name.sh
