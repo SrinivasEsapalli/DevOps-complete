@@ -1,4 +1,5 @@
-# shell_scripting:
+# linux :
+## Shell -scripting:
 - shell is an os between user and kernel(os)
 - shell scripting mainly used for repetative work. back uping files and monitoring system resources.
 
