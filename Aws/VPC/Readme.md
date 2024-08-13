@@ -85,7 +85,7 @@ There are three types of load balancers
  ## VPN
  - It is used to connet securely from thr organization environment to our VPc private subnets..
  -
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2020.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2020.jpg)
 
 
 
