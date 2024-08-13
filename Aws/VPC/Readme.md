@@ -82,6 +82,10 @@ There are three types of load balancers
   -- private load balancers in deployed in private subnets and accessed within the org aws network
   #### load balancers in public subnets can forward  requests to resources in private subnets..
    - load balancers can forward requests to other resources like ECS,m Lambda functions.
+ ## VPN
+ - It is used to connet securely from thr organization environment to our VPc private subnets..
+ -
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2020.jpg)
 
 
 
