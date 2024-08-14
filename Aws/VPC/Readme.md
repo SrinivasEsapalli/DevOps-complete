@@ -1,10 +1,25 @@
 # VPC - Virtual private cloud
 - we have a deafult VPC for each region.
 - default vpc CIDR range - 172.31.0.0/16 - 65536
+
+[ Subnet ](Subnet)
+[  Router table ](Router-table)
+[ Intrenet Gateway ](Intrenet-Gateway)
+[ NAT Gateway ](NAT-Gateway)
+[ DNS ](DNS)
+[ Elastic IP ](Elastic-IP)
+[ Security Groups ](Security-Groups)
+[ load balancers ](load-balancers)
+[ VPN ](VPN)
+[ VPC Peering ](VPC-Peering)
+[ Transit Gateway ](Transit-Gateway)
+
+
+
 ## Subnet
 - Vpc has multilple subnets
 - the CIDR range of subnet is between the CIDR range of vpc..
-### Router table
+## Router table
 - Router table range is used to route traffic between subnets and in and out of vpc.
 - one route table may have many subnets but one subnet should have only one route table..
 -Every VPC has a router which is responsible for routing traffic between subnets as well as in and out of a VPC
@@ -36,7 +51,7 @@ Route table for private subnets should point NAT Gatway..
 - Device private IPs will automatically be assigned a DNS entry
 -AWS DNS server can be accessed on the second IP of the VPC CIDR block as well - 169.254.169.253
 
-## Elastic IP's
+## Elastic IP
 Public IPs are not static and, if an EC2 instance goes down, then it will get a new public IP
 Elastic IPs are static IPv4 addresses that do not change
 To use an Elastic IP address, you first allocate one to your account, and then associate it with your instance or a network interface
@@ -80,12 +95,59 @@ There are three types of load balancers
 --> publc load balacers can be deployed as public and private..
   -- public can be deployed in public sibnets and accesssed across public internet..
   -- private load balancers in deployed in private subnets and accessed within the org aws network
-  #### load balancers in public subnets can forward  requests to resources in private subnets..
+#### load balancers in public subnets can forward  requests to resources in private subnets..
    - load balancers can forward requests to other resources like ECS,m Lambda functions.
- ## VPN
+
+### load balancers connection steps.
+- create two seperate subnets and name and use them for  loadbalancing.
+- Associate these subnets with the route tables.
+- create an application load balancer with reference to the subnets.
+- create an listener with refrence to loadbalancer and targetgroup here listner helps to forward the request from load balancer to target group
+- create a target group. Target group is the group of instances or any other services.. so refer to the group accordingly.
+- finally load balancer is help full to distribute the traffic between the instances..
+
+## VPN
  - It is used to connet securely from thr organization environment to our VPc private subnets..
- -
+ 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2020.jpg)
+
+- VPN gatway is amazon side end point for your VPN.
+- customer gateway is the org's (or our side) device pr software.
+- on-premise nework can be set statistically in a route table or dynmically exchnaged via BGP.
+- max bandwidth is 1.25 GBPS.
+
+## Direct connect
+- physical connection from on-premises with AWS.
+- Alternative to use VPN.
+- It offers greater thriughput and a more secure, stable connection than VPN over the internet.
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2021.jpg)
+
+## VPC Peering
+- Resources in one vpc cannot talk to resources in another VPC here VPC act as a network boundary..
+- Here we are using VPC Peering(nework connection bewteen VPC)
+- we can set up peering beween vpc's of same region, diff region or even different aws accounts.
+
+### VPC Peering Connection_steps
+- Here we need to create a vpc_peering inside vpc's service.
+- still the source and destination vpc are not linked so we need to create a route bewteen them
+- create a route in vpc1 route table to step1 vpc_peering  where it has subenets assciated so by usnig this route vpc1 will know about vpc2.
+- create  a route in vpc2 route table to the step1 vpc_peering  where it has the subnets this will help vpc2 to get to the vpc1.
+-  to check the working  ssh to  vpc1 instance then use ping with vpc2 instance private ip address or vice versa.
+
+## Transit Gateway
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2023.jpg)
+
+Drawback of vpc peering when we have many VPC's
+- here we created 
+- Here we need to create many peerings for 4 VPC's
+- Need to create many VPN while accessing them
+
+----> Transit Gateway
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2022.jpg)
+
+- so here by using only one transit gateway we  can avoid creating many peerings and it can be accessed by using only VPN.
 
 
 
