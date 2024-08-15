@@ -13,7 +13,10 @@
 [ VPN ](VPN)
 [ VPC Peering ](VPC-Peering)
 [ Transit Gateway ](Transit-Gateway)
-
+[ Private Link ](Private-Link)
+[ cloudFront ](cloudFront)
+[ Global accelerator ](Global-accelerator)
+[ Route 53](Route-53)
 
 
 ## Subnet
@@ -143,11 +146,70 @@ Drawback of vpc peering when we have many VPC's
 - Here we need to create many peerings for 4 VPC's
 - Need to create many VPN while accessing them
 
-----> Transit Gateway
+
+Transit Gateway
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2022.jpg)
 
 - so here by using only one transit gateway we  can avoid creating many peerings and it can be accessed by using only VPN.
 
+- we can do peering beween transit gateways of different regions and accounts..
 
 
+## Private Link
+- allows resources in our VPC to connect to services as if they were in the same VPC.
+- used to connect to public AWS services like s3 etc or other vpc in aws.
+- VPC endpoints facilitate communication beween VPC instances and services.
+
+## CloudFront
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2024.jpg)
+
+- origin - Here  ex: s3 bucket act as the origin for the cloud front because it has th emedia file in it.
+
+- distribution - it is the configuration unit of cloud front where we can find the origin details.
+- domain name - it is created by cloud front for the distribution.
+- edge location - it is the location where the images or other data is available at nearest location to the user so it will remove latency or bandwidth between user and and webserver.. hence the user can access data mor efficiently.
+
+
+### CLoudFront time to live (TTL)
+- cached content at an edge location remains for a set time known as time to live(TTL)
+- TTL value decides content validity before an edge location requests the origin.
+- Default TTL is 24 hours.
+- can have objects expire at a specific time.
+
+
+### cache invalidations
+- invalidations are performed on a distribution.
+- it helps to in validate content cached at edge locations.
+- /* - to invalidate entire distribution.
+- /file.txt - individual file
+- /images/* - all objects in images directory
+
+### Cloudfront creation steps
+- create a s3 buscket and store image in it and edit the policy of the image to access it pulcly
+- create a cloud front with the created s3 bucket. - Use the DNS link to access the image so here there are no servers in s3 so use dns link/image name
+- if we want to update it to different image with same name but with new image delete the old one from s3 and upload new  one
+- now try to access it from cloud front it will show the old one bcz minimum time limit(TTL) at edge location is 24 hours
+- To delete this create a validation and in cloudfront and wait till the validation is complete..now just see the dns link with the new image name now you can see the new dns image
+
+### cloudfront functions and edge functions.
+- these allow to run code at edge locations as close to users as possible.
+- can be used to mainpulate requests and responses that flow through cloudfront.
+-cloudfront functions great for header manipulations, URL redirects, authorization.
+- Lambda@Edge: long runtime, Network/file access.
+
+## Global accelerator
+- It is diffrent from cloudfront 
+- cloud front used for caching data at the edge.
+- Global accelerator - Routing users to edge locations so they can immediatley get on to the AWS network and optimize the time taken to reach apps as it is much efficient and faster then internet.
+
+## Route 53
+- An aws managed DNS(Domain name service)
+- we can purchase domains similar to sites like godady,Namescheap etc..
+- it is global service not specific to a region.
+
+### Hosted - zones
+- it is a collection DNS records.
+- when we create a hosted zone for a domain name then AWS going to reserve 4 namesspaces for specific zone.
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2025.jpg)
