@@ -2,21 +2,21 @@
 - we have a deafult VPC for each region.
 - default vpc CIDR range - 172.31.0.0/16 - 65536
 
-[ Subnet ](Subnet)
-[  Router table ](Router-table)
-[ Intrenet Gateway ](Intrenet-Gateway)
-[ NAT Gateway ](NAT-Gateway)
-[ DNS ](DNS)
-[ Elastic IP ](Elastic-IP)
-[ Security Groups ](Security-Groups)
-[ load balancers ](load-balancers)
-[ VPN ](VPN)
-[ VPC Peering ](VPC-Peering)
-[ Transit Gateway ](Transit-Gateway)
-[ Private Link ](Private-Link)
-[ cloudFront ](cloudFront)
-[ Global accelerator ](Global-accelerator)
-[ Route 53](Route-53)
+- [ Subnet ](Subnet)
+- [  Router table ](Router-table)
+- [ Intrenet Gateway ](Intrenet-Gateway)
+- [ NAT Gateway ](NAT-Gateway)
+- [ DNS ](DNS)
+- [ Elastic IP ](Elastic-IP)
+- [ Security Groups ](Security-Groups)
+- [ load balancers ](load-balancers)
+- [ VPN ](VPN)
+- [ VPC Peering ](VPC-Peering)
+- [ Transit Gateway ](Transit-Gateway)
+- [ Private Link ](Private-Link)
+- [ cloudFront ](cloudFront)
+- [ Global accelerator ](Global-accelerator)
+- [ Route 53](Route-53)
 
 
 ## Subnet
