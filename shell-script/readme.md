@@ -1,15 +1,15 @@
 # Shell Scripts
-[ Intro ](intro)
-[ variables ](varibales)
-[ arithmetic operations ](arithmetic-operations)
-[conditional logic ](conditional-logic)
-[ for each loop ](for-each-loop)
-[ while loop ](while-loop)
-[  case statement ](case-statement)
-[ Shebang ](shebang)
-[ Exit codes ](Exit-codes)
-[ Functions ](Functions)
-[ shellcheck ](shellcheck)
+- [ Intro ](#intro)
+- [ variables ](#varibales)
+- [ arithmetic operations ](#arithmetic-operations)
+- [conditional logic ](#conditional-logic)
+- [ for each loop ](#for-each-loop)
+- [ while loop ](#while-loop)
+- [  case statement ](#case-statement)
+- [ Shebang ](#shebang)
+- [ Exit codes ](#Exit-codes)
+- [ Functions ](#Functions)
+- [ shellcheck ](#shellcheck)
 
 ## Intro
 ## Why
@@ -57,12 +57,12 @@ Ex: automation-task-name command-line-variable_name
     --> here we can use $1 in place of the variable name
 
 
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2014.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2014.jpg)
 
 ### read statement
 
 read -p "Enter name of mission:"  mission_name
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2015.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2015.jpg)
 
 ### arithmetic operations
 
@@ -95,19 +95,19 @@ fi
 
 #### conditional operator for comparison-statement
 
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2016.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2016.jpg)
 
 
 #### with double parenthesis
 - we use this in different cases
 
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2017.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2017.jpg)
 
 #### && and ||
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2018.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2018.jpg)
 
 ##### with  files
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%2019.jpg)
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2019.jpg)
 
 #### for each loop
 for variable_name in <list of missions>

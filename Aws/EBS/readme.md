@@ -1,9 +1,9 @@
 # EBS(Elastic Block Storage)
 
 
-- [ Intro ](Intro)
-- [ Types ](Types)
-- [ creation and working of ebs with instance](creation-and-working-of-ebs-with-instance)
+- [ Intro ](#Intro)
+- [ Types ](#Types)
+- [ creation and working of ebs with instance](#creation-and-working-of-ebs-with-instance)
 
 
 ## Intro
