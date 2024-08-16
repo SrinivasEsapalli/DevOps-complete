@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  This template deploys a VPC. #magic___^_^___line #magic___^_^___line
+Resources:
+
+  #EC2-instance launch
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: instance1
+  MyEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: instance1a-2
+  MyEC2Instance3:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1b"
+      Tags:
+      - Key: Name
+        Value: instance1b
+
+
+
+
+

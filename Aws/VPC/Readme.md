@@ -213,3 +213,20 @@ Transit Gateway
 - when we create a hosted zone for a domain name then AWS going to reserve 4 namesspaces for specific zone.
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2025.jpg)
+
+- if we buy a domain ex: introdomain.com and then we can assign ip address to this domain and then when ever we try to access this domain it will displays the content of that instance as a result
+- here we can use ec2 instance ip address and we can install nginx using comming 
+- sudo yum install -y nginx - to install
+
+- sudo systemctl start nginx - to start a nginx
+
+- use cd /usr/share/nginx/html to move to thid index.html path
+- use sudo chmod 777 index.html - to change the file permissions
+- now we can chnage the contentent and this content will be displayed when we tried to access it using domain name.
+
+### Application recovery controller
+
+![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2026.jpg)
+
+- Amazon Route 53 Application Recovery Controller is a service that continually monitors your application's ability to recover from failures.
+
