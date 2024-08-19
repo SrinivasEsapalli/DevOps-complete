@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  This template deploys a VPC.
+Resources:
+  #EC2-instance launch
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: instance1
+  MyEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: instance1a-2
+  MyEC2Instance3:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      AvailabilityZone: "us-east-1b"
+      Tags:
+      - Key: Name
+        Value: instance1b
+  NewVolume1:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: 10
+      Encrypted: true
+      AvailabilityZone: !GetAtt MyEC2Instance.AvailabilityZone
+      Tags:
+      - Key: name
+        Value: vol1-ec2
+  MountPoint:
+    Type: AWS::EC2::VolumeAttachment
+    Properties:
+      InstanceId: !Ref MyEC2Instance
+      VolumeId: !Ref NewVolume1
+      Device: /dev/sdh
+

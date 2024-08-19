@@ -1,0 +1,316 @@
+## created to VPc's and did peering between them..
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  This template deploys a VPC.
+Parameters:
+  VpcCIDR:
+    Description: Please enter the IP range (CIDR notation) for this VPC
+    Type: String
+    Default: 10.0.0.0/16
+  VpcCIDR2:
+    Description: Please enter the IP range (CIDR notation) for this VPC
+    Type: String
+    Default: 10.2.0.0/16
+  VPCName:
+    Description: Please enter the name for this VPC
+    Type: String
+    Default: VPC-From-CFT
+  VPCName2:
+    Description: Please enter the name for this VPC
+    Type: String
+    Default: VPC-From-CFT-2
+  publicSubnetName:
+    Description: Please enter the name for this public subnet
+    Type: String
+    Default: publicSubnet
+  privateSubnetName:
+    Description: Please enter the name for this public subnet
+    Type: String
+    Default: privateSubnet
+  publicSubnetCIDR:
+    Description: Please enter the IP range (CIDR notation) for this public subnet
+    Type: String
+    Default: 10.0.10.0/24
+  publicSubnet2CIDR:
+    Description: Please enter the IP range (CIDR notation) for this public subnet
+    Type: String
+    Default: 10.2.20.0/24
+  privateSubnetCIDR:
+    Description: Please enter the IP range (CIDR notation) for this private subnet
+    Type: String
+    Default: 10.0.30.0/24
+
+Resources:
+  ## new VPC
+  myVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsSupport: true
+      EnableDnsHostnames: false
+      Tags:
+      - Key: Name
+        Value: !Ref VPCName
+
+  ## security group
+  myVPCSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH, HTTP, and HTTPS traffic
+      VpcId: !Ref myVPC
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 443
+        ToPort: 443
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: icmp
+        FromPort: 8
+        ToPort: -1
+        CidrIp: 0.0.0.0/0
+  ## public subnet
+  publicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref myVPC
+      CidrBlock: !Ref publicSubnetCIDR
+      AvailabilityZone: "us-east-1d"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: !Ref publicSubnetName
+  #EC2-instance launch
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      SubnetId: !Ref publicSubnet
+      SecurityGroupIds:
+      - !Ref myVPCSecurityGroup
+      Tags:
+      - Key: Name
+        Value: instance1
+
+  ## public route table
+  publicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref myVPC
+      Tags:
+      - Key: Name
+        Value: Rt1
+  ## Attachinng subnet to route table
+  mySubnetPublicRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref publicRouteTable
+      SubnetId: !Ref publicSubnet
+  ## IGW
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: Name
+        Value: IGW
+  ## IGW and VPC attachment
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref myVPC
+  ## IGW and route table association
+  defaultPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      RouteTableId: !Ref publicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+    ### 
+  # private subnet
+  privateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref myVPC
+      CidrBlock: !Ref privateSubnetCIDR
+      AvailabilityZone: "us-east-1a"
+      MapPublicIpOnLaunch: false
+      Tags:
+      - Key: Name
+        Value: !Ref privateSubnetName
+  # private route table
+  privateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref myVPC
+      Tags:
+      - Key: Name
+        Value: private_Rt
+  mySubnetPrivateRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref privateRouteTable
+      SubnetId: !Ref privateSubnet
+  #######################
+  ## VPc2 ##
+  #######################
+  myVPC2:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR2
+      EnableDnsSupport: true
+      EnableDnsHostnames: false
+      Tags:
+      - Key: Name
+        Value: !Ref VPCName2
+    ## security group2 for VPC2
+  myVPCSecurityGroup2:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH, HTTP, and HTTPS traffic
+      VpcId: !Ref myVPC2
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 443
+        ToPort: 443
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: icmp
+        FromPort: 8
+        ToPort: -1
+        CidrIp: 0.0.0.0/0
+
+  ## one more public subnet
+  publicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref myVPC2
+      CidrBlock: !Ref publicSubnet2CIDR
+      AvailabilityZone: "us-east-1a"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: public-subnet2
+  # public route table2 for vpc 2
+  publicRouteTable2:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref myVPC2
+      Tags:
+      - Key: Name
+        Value: public_Rt2
+  ## Attachinng subnet to route table
+  mySubnetPublicRouteTableAssociation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref publicRouteTable2
+      SubnetId: !Ref publicSubnet2
+  ## IGW
+  InternetGateway2:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: Name
+        Value: IGW2
+  ## IGW and VPC attachment
+  InternetGatewayAttachment2:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway2
+      VpcId: !Ref myVPC2
+  ## IGW and route table association
+  defaultPublicRoute2:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment2
+    Properties:
+      RouteTableId: !Ref publicRouteTable2
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway2
+  # instance2 for vpc2
+  MyEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      SubnetId: !Ref publicSubnet2
+      SecurityGroupIds:
+      - !Ref myVPCSecurityGroup2
+      Tags:
+      - Key: Name
+        Value: instance2
+    #NatGateway1EIP:
+  #  Type: AWS::EC2::EIP
+  #  DependsOn: InternetGatewayAttachment
+  # Properties:
+  #   Domain: vpc
+  #NatGateway:
+  # Type: AWS::EC2::NatGateway
+  # Properties:
+  # AllocationId: !GetAtt NatGateway1EIP.AllocationId
+  #SubnetId: !Ref publicSubnet 
+  #NatGatewayPrivateRoute:
+  # Type: AWS::EC2::Route
+  # DependsOn: InternetGatewayAttachment
+  #Properties:
+  #  RouteTableId: !Ref privateRouteTable
+  # DestinationCidrBlock: 0.0.0.0/0
+  # NatGatewayId: !Ref NatGateway 
+
+
+  ## Elastic IP
+
+  # myEIP:
+  #  Type: AWS::EC2::EIP
+  # Properties:
+  #  InstanceId: !Ref MyEC2Instance
+
+
+  ###############  VPC Peering #############
+
+
+  vpcPeeringConnection:
+    Type: AWS::EC2::VPCPeeringConnection
+    Properties:
+      VpcId: !Ref myVPC
+      PeerVpcId: !Ref myVPC2
+      Tags:
+      - Key: Name
+        Value: peering-example
+  RouteMyVpc:
+    Type: AWS::EC2::Route
+    DependsOn: vpcPeeringConnection
+    Properties:
+      RouteTableId: !Ref publicRouteTable
+      DestinationCidrBlock: 10.2.0.0/16 #This is the vpc1 cidr range 
+      VpcPeeringConnectionId: !Ref vpcPeeringConnection
+
+  RouteMyVpc2:
+    Type: AWS::EC2::Route
+    DependsOn: vpcPeeringConnection
+    Properties:
+      RouteTableId: !Ref publicRouteTable2
+      DestinationCidrBlock: 10.0.0.0/16 #This is the vpc2 cidr range 
+      VpcPeeringConnectionId: !Ref vpcPeeringConnection
+
+
+
+
+
+

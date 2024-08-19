@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "This template deploys a S3 BUCKET \n"
+Resources:
+  bucket1:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: demo-test-buc528
+      StorageClass: ONEZONE_IA
+      VersioningConfiguration: Enabled
+
+
