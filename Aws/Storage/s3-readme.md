@@ -5,6 +5,7 @@
 - [ ACL and Resource Policies ](ACL-and-Resource-Policies)
 
 
+
 ## intro
 - simple storage services
 - it provides data availabilty, scalability and security.
@@ -79,6 +80,13 @@
 - written in JSON.
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2031.jpg)
+
+principal - who the policy should apply to and * means applied to everyone on internet.
+resource - tells what aws resources this policy applied to
+action  - tells what the principal allowed to perform on the resources
+effect - allows or denies an action
+
+
 
 ##### note: Iam policys are attached to users  to make them access specific services etc.. and Resource policys are applied to resource like s3 so that who can modify it and resources policys are applied to annonymous and public users..  
 
