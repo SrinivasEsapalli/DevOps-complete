@@ -14,7 +14,7 @@
 - [ Private Link ](#Private-Link)
 - [ cloudFront ](#cloudFront)
 - [ Global accelerator ](#Global-accelerator)
-- [ Route 53](#Route-53)
+- [ Route 53 ](#Route-53)
 
 ## VPC 
 - Virtual private cloud
@@ -86,7 +86,7 @@ There are three types of load balancers
 ### Application load balancer
 - specifically for web apps
 - forward req of diff kind 
-   --> url path conditions, host domain, Http fields - header,methid, suports HTTP redirects and custom HTTP response..
+   --> url path conditions, host domain, Http fields - header,metho  m   d, suports HTTP redirects and custom HTTP response..
    - we can perform app specific health checks
    - it is operated at layer 7
 ### Network load balancer
@@ -127,6 +127,7 @@ There are three types of load balancers
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2021.jpg)
 
 ## VPC Peering
+
 - Resources in one vpc cannot talk to resources in another VPC here VPC act as a network boundary..
 - Here we are using VPC Peering(nework connection bewteen VPC)
 - we can set up peering beween vpc's of same region, diff region or even different aws accounts.
@@ -218,7 +219,7 @@ Transit Gateway
 - if we buy a domain ex: introdomain.com and then we can assign ip address to this domain and then when ever we try to access this domain it will displays the content of that instance as a result
 - here we can use ec2 instance ip address and we can install nginx using comming 
 - sudo yum install -y nginx - to install
-
+     
 - sudo systemctl start nginx - to start a nginx
 
 - use cd /usr/share/nginx/html to move to thid index.html path

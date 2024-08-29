@@ -2,8 +2,11 @@
 - [ intro ](#intro)
 - [ storage classes ](#storage-classes)
 - [ Versioning ](#Versioning)
-- [ ACL and Resource Policies ](ACL-and-Resource-Policies)
-
+- [ ACL and Resource Policies ](#ACL-and-Resource-Policies) 
+- [ Static Hosting ](#Static-Hosting)
+- [ Pre-Signed URL's ](#Pre-Signed-URL's)
+- [ Access Point ](#Access-Point)
+- [ Backup ](#Backup)
 
 
 ## intro
@@ -81,10 +84,10 @@
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2031.jpg)
 
-principal - who the policy should apply to and * means applied to everyone on internet.
-resource - tells what aws resources this policy applied to
-action  - tells what the principal allowed to perform on the resources
-effect - allows or denies an action
+- Principal - who the policy should apply to and * means applied to everyone on internet.
+- Resource - tells what aws resources this policy applied to
+- Action  - tells what the principal allowed to perform on the resources
+- Effect - allows or denies an action
 
 
 
@@ -94,6 +97,51 @@ effect - allows or denies an action
 - access control mechanisms
 
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2032.jpg)
+
+
+## Static Hosting
+- we can host static websites in s3 bucket but we cannot host dynamic websites like which uses servers or sever-side logic etc..
+- additional fee per http rrequest.
+ - if a custom domain is used then bucket name needs to match with the domain name.
+
+## Pre-Signed URL's
+
+- These are the Url's created by authenticated to access any  private file by any public user. By using this URL s3 bucket treats the public user as the authorized user since it's an authorized user's URL..
+
+notes: When creating pre-signed URLs, an expiration date must be provided
+* Expiration duration of maximum 7 days using an IAM user is provided
+* If an IAM user does not have access to an 53 bucket, a pre-signed URL can still be generated using that account
+* The pre-signed URL does not give you access to a bucket; however, it allows you to send a request to S3 as the user that generated the URL
+
+## Access Point
+- it helps to  manage acces to your bucket
+- every group or user can be given by their own  access point which act as their own view or tunnel into s3 bucket..
+- it has own ARN so it won't reach to bucket URl instead of that it uses it's own URL.
+- intstead of buckets we can apply policy to access points.
+
+
+## Backup
+- creates copies of data to restore it in case of data loss
+- An Essential part of disaster recovery
+ex: Backup Vault, Backup Plan, Recovery Point..
+- backup valut also will create the  replica of vault in diffrent availability zones..
+#### Aws Backup - Monitoring inytegrations
+- list of aws services
+- AWs organizations, Amazon EventBridge, AWS CLoud Watch, Aws Cloud Trail, AMazon SNS
+### Disaster Recovery
+- it's a broader strategy including backup includes planning for system and application recovery..
+ex: s3, EBS Snapshots 
+
+### Elastic Disaster Recovers(DRS)
+- it is fully managed disaster recovery service
+- aws will manage everything and we can use aws infrastucture as recovery site no need buy servers etc..
+- keeps things in continuoes replication state keep updates data regularly..
+- 
+
+
+
+
+
 
 
  
