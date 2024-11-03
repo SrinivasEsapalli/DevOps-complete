@@ -1,0 +1,161 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Basic ECS cluster \n"
+Parameters:
+  VpcCIDR:
+    Description: Please enter the IP range (CIDR notation) for this VPC
+    Type: String
+    Default: 20.0.0.0/16
+  VPCName:
+    Description: Please enter the name for this VPC
+    Type: String
+    Default: VPC-From-CFT
+  publicSubnetName:
+    Description: Please enter the name for this public subnet
+    Type: String
+    Default: publicSubnet
+  publicSubnetCIDR:
+    Description: Please enter the IP range (CIDR notation) for this public subnet
+    Type: String
+    Default: 20.0.10.0/24
+Resources:
+  ## VPC details
+  myVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsSupport: true
+      EnableDnsHostnames: false
+      Tags:
+      - Key: Name
+        Value: !Ref VPCName
+  myVPCSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH, HTTP, and HTTPS traffic
+      VpcId: !Ref myVPC
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 443
+        ToPort: 443
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: icmp
+        FromPort: 8
+        ToPort: -1
+        CidrIp: 0.0.0.0/0
+  publicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref myVPC
+      CidrBlock: !Ref publicSubnetCIDR
+      AvailabilityZone: "us-east-1d"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: !Ref publicSubnetName
+
+  #EC2-instance launch
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ae8f15ae66fe8cda
+      InstanceType: t2.micro
+      KeyName: dummy
+      SubnetId: !Ref publicSubnet
+      SecurityGroupIds:
+      - !Ref myVPCSecurityGroup
+      Tags:
+      - Key: Name
+        Value: instance1
+
+  publicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref myVPC
+      Tags:
+      - Key: Name
+        Value: Rt1
+  ## adding subnets to route table
+  mySubnetPublicRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref publicRouteTable
+      SubnetId: !Ref publicSubnet
+  ## internet gateway
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: Name
+        Value: IGW
+
+  ## attachinng to vpc
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref myVPC
+  ## Route between IGW and route table 
+  defaultPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      RouteTableId: !Ref publicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+  ###########################################################################################################
+  ###########################################################################################################
+  ## cluster details
+
+  mycluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: EcsDemo23
+  ## task
+  taskDefination:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      ContainerDefinitions:
+      - Name: nginx11
+        Image: nginx
+        PortMappings:
+        - ContainerPort: 3000
+          HostPort: 3000
+          Protocol: tcp
+      Cpu: "256"
+      Family: task1
+      Memory: "512"
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+      - FARGATE
+  ## service    
+  service1:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref mycluster
+      DesiredCount: 3
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+          - !Ref myVPCSecurityGroup
+          Subnets:
+          - !Ref publicSubnet
+      ServiceName: mycluster-svc-1
+      TaskDefinition: !Ref taskDefination
+
+
+
+
+
+
+
+

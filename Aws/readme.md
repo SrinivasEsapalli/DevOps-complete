@@ -19,6 +19,9 @@
  ex: rRekognition for Ml and gmail, zoom all apps etc..
 
 
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2040.jpg)
+
+
 
  
 

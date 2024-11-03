@@ -1,0 +1,45 @@
+name: my first action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_PEM }}" > ~/.ssh/dummy.pem
+        chmod 600 ~/.ssh/dummy.pem
+
+    - name: SSH into EC2 instance and set up environment
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/dummy.pem ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
+          # Copy the pem file to the EC2 instance (optional)
+          echo "${{ secrets.EC2_PEM }}" > ~/dummy.pem
+          chmod 400 ~/dummy.pem
+
+          # Update system and install git & nginx
+          sudo yum update -y
+          sudo yum install -y git nginx
+
+          # Start and enable Nginx
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
+
+          # Set permissions (example for /var/www/html)
+          sudo chown -R ec2-user:ec2-user /var/www/html
+          sudo chmod -R 755 /var/www/html
+
+          # Confirmation
+          echo "Git and Nginx installed successfully!"
+        EOF
+
+    env:
+      EC2_PEM: ${{ secrets.EC2_PEM }} # Add the PEM file content as a secret in GitHub Secrets
+      EC2_HOST: ${{ secrets.EC2_HOST }} # Add the EC2 Host IP as a secret
+
+

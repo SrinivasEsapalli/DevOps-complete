@@ -7,7 +7,10 @@
 - [ Elastic Container service ](#Elastic-Container-service)
 - [ Elastic kubernetes service ](#Elastic-kubernetes-service)
 - [ Elastic Container Registry(ECR)](#Elastic-Container-Registry(ECR))
-
+- [ App Runner ](#App-Runner)
+- [ Batch ](#Batch) 
+- [ Lambda ](#Lambda)
+- [ Step functions ](#Step-functions)
 
 
 
@@ -121,17 +124,14 @@ Ec2- image-builder features:
 - container orchestrators are brains of a containerized environments. They do all tasks like deploying containers across all available servers, load balancing request to containers.
 - providing container to container connectivity.
 -  Restrating failed containers.
-- Moving containers whern hosts fail
+- Moving containers when hosts fail
 Ex: Kubernetes, ECS. APache Mesos
 
 ### ECS
 - Ecs is managed by amazon and it is fully managed container orchestration service that helps manage and scale containerized applications.
 - containers run on ec2 instances or fargate.
-
-
 - EC2
 ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2036.jpg)
-
 - control plane will act as brain.
 - With ec2 we need to manage the worker node i,e install docker, ECS Agent, Firewall, Patches etc in the cluster then ecs will manages the containers and here we will get full control of the infrastructure since we are configuring it.
 
@@ -164,6 +164,31 @@ Ex: Kubernetes, ECS. APache Mesos
 
 
 
+### Steps for ECS 
+-> create a cluster
+-> create the task definition because service needs the task definition while creating..
+	- here we need image details like for which image/container we are creating target group.
+	- Add the port details also..
+	- we need to select the launch type whether it's an Ec2 instances or fargate ..
+	- we need to select task execution role
+	- task size memory and CPU.
+
+-> create a service
+ 	- Here mention number of tasks(these are nothing but the instances of that container)
+	- give the vpc details here
+	- select subnets
+	- select security groups
+	
+
+
+
+This is the normal ecs cluster now we are trying to use two different containers so when we try to send the data for two different containers we need the load balancer
+ - load balancer
+	- use the listener..
+	- target group.. 
+
+
+
 
 ## Elastic kubernetes service
 ### EKS(Elastic kubernetes service)
@@ -191,6 +216,82 @@ Ex: Kubernetes, ECS. APache Mesos
 ## Elastic Container Registry(ECR)
 - It is just like docker hub priovate registry we can push our docker images here..
 - It is a Fully managed AWS Service.
+
+
+## App Runner
+- It service which make very easy to deploy applications without having to worry about infrastructure..like auto deployment.
+-Just we need to push code to git repo or image to ECR then it will deploy the code into infrastructure..
+
+## Batch
+- It helps to run jobs or tasks that don't need human intervension..
+- If nay Job needs different memory any other so batch will automatically select best possible server or instance for that job
+- It will execute the job according to priority..
+-Job definition: it's a template describes how the job has to be run..
+- Job Submission: Jobs are submitted to batch
+- Job Queues: It has the priority to which job to run. It associated with compute environment.
+- Job Scheduler - It will tell when and where to run jobs..
+- JOb Execution - Jobs are executed in docker container
+- Compute ENvironments - collection of compute resources that are used to run the jobs.
+
+
+Life cycle of Jobs:
+- submitted - You sent a Job to AWS Batch. The Job Received but it's not in the quesue.
+- Pending - Waiting in the queue and ready to be scheduled 
+- Runnable - Means the job ready to complete environment to run.
+- Starting - The job has been assigned to a compute resource and  container has to setup..
+- Runnig - The Job currently has been executed.
+
+
+## Lambda
+- It's serverless measn we don't need to manage or provison servers. AWs Handles everything.
+- event driven - any time a file has beeen uploaded etc. It will and execute lambda function.
+- It supports multiple languages.
+- It will support auto scaling.
+
+### Key features
+- Add Trigger - It will have the list like s3,SNS,SQS, etc. So by using we can choose when our lambda function needs to trigger.
+- Layers - we can add the  third party libraries,code etc..
+- destination - When ecer the function is executed we can send to SNS , SQS etc.
+
+## Step functions
+- we can execute different lambda functions together ..
+- need to create a state machine..
+
+
+## Serverless Application Model
+- It' s template like CFT (cloud formation template) help to build the application including Lambda functions, API Gateways etc..
+
+- sam init - initialize the serverless application..
+- sam build - to build the serverless applications..
+- sam local invoke - invokes local lambda function
+- sam package - packages serverless application for deployment.
+- sam deploy - deploy's a serverless app to aws.
+- sam logs - fetch the logs for the lambda function..
+- sam validate - to validate the template..
+- sam publish - publishes app to aws serverless repo..
+- it is packaged with the application and uploded it to the s3 bucket.
+
+
+### serverless application Repository.
+- It's just gitHub for serverless applications here we will package the template and application code. We deploy it into the repository.
+
+
+### AMPLIFY
+- complete solution for building mob and web applications and it will simplify the process.
+- by using this we can add authentication, API, STorage etc.. quickly to the application.
+
+### Outposts
+- It is a family of fully managed solutions delivering AWs infra and services to any onprem and edge locations.
+- Out post will be installed on-prem and it connected to edge location using AWS Direct connect.
+
+### EKS ANywhere/ ECS ANywhere
+- It will help to deploy EKS/ECS on on-premises.
+- helpful for Hybrid deployments...like when it is working on onprem and cloud.
+
+
+
+
+
 
 
 
