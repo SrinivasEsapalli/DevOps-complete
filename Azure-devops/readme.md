@@ -6,6 +6,7 @@
 - [ Azure Pipeline ](#Azure-Pipeline)
 - [ Azure Artifacts  ](#Azure-Artifacts)
 - [ Azure Test Plans ](#Azure-Test-Plans)
+- [ Agent Creation steps for Linux ](Agent-Creation-steps-for-Linux)
 
 
 ## Introduction
@@ -120,10 +121,32 @@ Automated Tests
 - Executed as the part of Azure pipelines and results are viewd in Azure test plans.
 
 
+## Agent Creation steps for Linux
+### To create a linux Agent by using AWS EC2
+- create an EC2 instance in AWs and connect it using aws ec2 connect.
+- In EC2 Aws terminal create a new directory and move in to it - mkdir myagent && cd myagent
+-  Execute this command - Wget "Paste the URL to download agent for linux from DevOps new agent creation"
+- Now Run - tar zxvf ~/Downloads/vsts-agent-linux-x64-3.246.0.tar.gz ( check for file name and location like whether it's located in downloads or not)
+- To install any missing packages install and run these commands   
+- yum install libicu -y  ( URL : https://github.com/actions/runner/issues/2511 )
+- Run -  rpm -q libicu
+- To congigure the agent - ./config.sh
+- to run the agent: ./run.sh
+- Commanads to run the agent continuously in background
+- sudo ./svc.sh install
+- nohup ./runsvc.sh&
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2054.jpg)
 
 
+- Now connecting to the Azure DEvOps Servers and authenticating using PAT.
+
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2054.jpg)
 
 
+- Now the Agents will be started in the declared location.
+
+- To create the new pipeline by using the exisisting Azure Repo code.
+- 
 
 
 
