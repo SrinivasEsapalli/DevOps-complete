@@ -14,15 +14,13 @@
 - [ working ](#working)
 
 ## types
-
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%204.jpg)
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%204.jpg)
 ### .deb - Debian package manager
 -> ubuntu, debian, linux Mint uses debian based package managers.
 
 ### .RPM
 -> RHEL, Centos, Fedora used Rpm based package managers.
-
-![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/shell_script/practise/Screenshorts/Screen%205.jpg)
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%205.jpg)
 
 ### DPKG 
 - The base package manager for debian based distributions.
