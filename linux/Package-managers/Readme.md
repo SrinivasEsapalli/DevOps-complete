@@ -1,7 +1,7 @@
  location: /home/sri 
 
 # package-managers
-  - A pacage contains all the files that a software required to run. so to install this pacages into a system we may face dependency issues or some other errors so here comes the package manager..
+  - A package contains all the files that a software required to run. so to install this packages into a system we may face dependency issues or some other errors so here comes the package manager..
 
  - package Manager is a software responsible for installing, configuring, updating, removing packages from os.
 
@@ -25,14 +25,14 @@
 ### DPKG 
 - The base package manager for debian based distributions.
 ### APT
-- a fornt end for the dpkg found in debian.
+- a front end for the dpkg found in debian.
 ### APT-GET
 - Traditional front end for dpkg system found in debian.
 ### Rpm - Red Hat package manager
 - The base package manager for Redhat based distributions.
 ex: Centos, Fedora
 ### YUM 
-- a fornt end for the RPM in redhat diributution.
+- a front end for the RPM in redhat diributution.
 ### DNF
 - a more feature-rich front-end for the RPM system.
 
