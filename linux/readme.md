@@ -1,12 +1,15 @@
 # linux :
 ## Shell -scripting:
+- Shell helps in text based interaction  between user and the operating system.
 - shell is an os between user and kernel(os)
 - shell scripting mainly used for repetative work. back uping files and monitoring system resources.
 
 ## Shell:
  - it allows text based interaction between user and the interface(operating system)..
 ### gitbash is used to run the linxu commands on windows system..
- /home--> is the default directory
+ /home--> is the default directory, It will be used to store files and directories, like dedicated locker, other users can't access your file.
+ /home/usernmae --> Is the default home directory for a user.
+ Home directory is represented by '~'
 
  -> evry user has it's data in the home directory
  ex: sri 
@@ -26,18 +29,47 @@
 ### command types:
 #### Built-in commands
 echo,pwd,set,cd, mkdir etc..
+There are 30 such commands.
 ### External commands
 mv, date, uptime etc..
+scripts located in distinct filee.
 ### type command_name
-- It will gives us whether the command is built in or user defined..
+- It will gives us whether the command is built in or user defined..==
  ### ~
  home directory is represented by using tilda(~) sign
+### uptime
+- shows howlong system running from reboot/restart.
+### "echo -n hello"
+Here..
+echo - Is the command
+-n - is the option
+hello - is the argument.
+### PWD 
+Will print the present working directory.
+### whatis Command
+- helps to give the description of the command and uses.
+- It gives one line description about it.
+### man Command
+- helps to give the description of the command and uses.
+- It gives clear description about it with example.
+
+### command -help or command --help
+- Gives the details about the command on how to use it etc..
+
+### apropos modpr
+- It will givees the list of commands which are available with that keyword.
+### echo $HOME
+To check the home directory of a user.
+
+
+
+
 
 
  ## directory commands
 
 ### mkdir directory_name or mkdir d1_name d2_name d3_name
-- To create a directory
+- mkdir - make directory, is used to create a directory
 ### cd directory_name
 - To go inside a folder
 ### mkdir directory_name/child_directory_name
@@ -59,6 +91,9 @@ As a Linux system administrator or power user
 ### cd "complete_path" or cd /complete_path
 - we can by giving complete path
 - This is also called as Aboslute path
+
+### Cd /folder name
+- To move to any particular folder
 ### mv source_directory_path destination_path
 - To move a directory from one location tp other
 - absolute path
@@ -81,8 +116,10 @@ As a Linux system administrator or power user
 ### touch fileneme.txt
 - To create a empty file
 ### more filename_txt
-- To scroll the data
-### ls -l
+- To scroll the data in a text file
+### ls -l  
+Ls stands for List storage.
+
 - list files with permissions
 ### ls -a
 - shows the hidden files
@@ -113,6 +150,8 @@ Bourne again Shell(bash)
 ### alias up=uptime
 echo 'alias up=uptime' >> ~Use_name/.profile
 - To make an alias name and to make it permanent
+### echo date
+- To print the current date.
 
 ### environment varibles
 - It will store information about user login session..
@@ -136,6 +175,7 @@ echo 'alias ll="ls -l"' >> ~/.profile
 
 
 ### path varible
+- when a user issues external command toshell shell uses path variable to search the commands.
 - Specifying a set of directories where executable programs are located.
 ### echo $PATH
 - TO check the available path
@@ -148,6 +188,10 @@ echo 'alias ll="ls -l"' >> ~/.profile
 - $ = user prompt sysmbol ..which user is loged in.
 ### PS1 - Prompt String 1
 - used to customize the appearance of the prompt.
+-like Example inplace of $ in the terminal we can print what ever we like.
+
+ ![screenshot](https://github.com/SrinivasEsapalli/DevOps-complete/blob/main/linux/Screenshorts/Screen%2079.jpg)
+
 ### PS1="[\d \t \u@\h:\w ] $"
 [Wed Jul 31 18:36:33 srini@Srinivas:~ ] $
 ### Bash Prompt
